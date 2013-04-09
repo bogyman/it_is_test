@@ -1,0 +1,60 @@
+<html>
+<head>
+    <title>Task1</title>
+    <style type="text/css">
+        .red{
+            color:red;
+        }
+    </style>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript">
+        function is_num(i){
+            return !isNaN(parseFloat(i)) && isFinite(i)
+        }
+
+
+        function form_builder(data){
+            var form = $('<form></form>').attr("name", 'some_form'); 
+            var data = eval(data) // bz we are sure in our data
+            $.each(data, function(){
+                title = this.title
+                value = this.value
+
+                $("<lable></lable>")
+                    .html(title)
+                    .attr("for", title)
+                    .appendTo(form);
+                $("<input type='text' value='"+value+"' />")
+                    .attr("id", title)
+                    .attr("name", title)
+                    .appendTo(form);
+            });
+            $("<input type='submit'/>").appendTo('form');
+            form.appendTo('body');
+        }
+
+        function install_handlers(){
+            $('input[type="text"]').on('mouseover',function(){
+                if ( is_num( $(this).val() ) ){
+                    $('lable[for='+ $(this).attr('id')+']').addClass("red");
+                }
+            })
+            $('input[type="text"]').on('mouseleave',function(){
+                $('lable[for='+ $(this).attr('id')+']').removeClass("red");
+            })
+        }
+
+        $(function(){
+
+            $.get("get", function(data){
+                form_builder(data)
+                install_handlers()
+            })
+        })
+    </script>
+</head>
+
+<body>
+
+</body>
+</html>
