@@ -1,7 +1,7 @@
 it_is_test
 ==========
 
-Task 1 ( ~40min )
+Task 1 ( ~30min )
 ----------
 html file with JS
 https://github.com/bogyman/it_is_test/blob/master/it/1/venv/templates/index.html
@@ -15,7 +15,7 @@ Should be installed
 
     pip install python-dateutil
 
-Task 3 ( ~50 min )
+Task 3 ( ~40 min )
 -----------
 create data base using
 
